@@ -1,0 +1,38 @@
+{% load static %}
+<table class="table table-bordered" id="data1">
+  <thead class="thead-light">
+    <tr>
+      {% for th in thead %}
+      <th>{{th}}</th>
+      {% endfor %}
+      <th> </th>
+    </tr>
+  </thead>
+  <tbody class="text-dark">
+      {% for elector in electores.all %}
+      <tr>
+        {% for values in elector.elector.get_field_values_votacion %}
+        <td>{{values}}</td>
+        {% endfor %}
+        <td>{{elector.get_transaction_status_display}}</td>
+        <td>
+          <!--'Acción' cell-->
+          {% if elector.transaction_status == 0 %}
+          <form method="post">
+            {% csrf_token %}
+            <button class="btn btn-success" type="submit" name="button" value={{elector.id}}>
+              Identificar {{elector.id}}
+            </button>
+          </form>
+          {% elif elector.transaction_status == 3 %}
+            {{elector.transaction_datetime}}
+          {% endif %}
+          <!--/'Acción' cell-->
+        </td>
+      </tr>
+      {% endfor %}
+
+  </tbody>
+
+
+</table>

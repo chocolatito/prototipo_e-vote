@@ -1,0 +1,31 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <title>{{title}}</title>
+  {% include "head.html" %}
+</head>
+
+<body class="sb-nav-fixed">
+  {% include "navbar.html" %}
+  <div id="layoutSidenav">
+    <div id="layoutSidenav_nav">
+      {% include "sidenavAccordion.html" %}
+    </div>
+    <div id="layoutSidenav_content">
+      <main>
+        {% block main %}
+        {% endblock %}
+      </main>
+
+      {% include "footer.html" %}
+    </div>
+  </div>
+
+  {% include "scripts.html" %}
+  {% block script_dataTable %}
+  {% endblock %}
+</body>
+
+</html>

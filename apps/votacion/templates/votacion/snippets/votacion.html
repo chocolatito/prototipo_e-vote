@@ -1,0 +1,30 @@
+<div class="container-fluid">
+  <h1 class="mt-4">{{object.title}}</h1>
+  <form class="" method="post">
+  {% csrf_token %}
+  <div class="row justify-content-center">
+      <!--/Voto a Candidatos-->
+      {% for candidato in candidatos.all %}
+      <div class="col-xl-4">
+        <div class="card mb-4">
+          <div class="card-header text-center"><b>{{candidato.elector}}</b></div>
+          <div class="card-body">
+            <ul>
+              <li>Candidato: {{candidato}}</li>
+            </ul>
+          </div>
+          <div class="card-footer d-flex justify-content-center">
+            <button class="btn btn-primary" type="submit" name="button" value={{candidato.id}}>
+              <b>VOTAR</b>
+            </button>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+      <!--/Voto a Candidatos-->
+      <!--Voto en Blanco-->
+      <!--/Voto en Blanco-->
+  </div>
+  </form>
+
+</div>

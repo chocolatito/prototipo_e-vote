@@ -1,0 +1,25 @@
+{% extends "index.html" %}
+
+{% block main %}
+<div class="container-fluid">
+  {% if object.transaction_status == 1 %}
+    <h2 class="mt-4">Elector: {{object.elector}}</h2>
+    <h2 class="mt-2">Identificado</h2>
+    <form class="" method="post">
+      {% csrf_token %}
+      <button class="btn btn-success" type="submit" name="button" value={{object.pk}}>Habilitar Urna</button>
+      <button class="btn btn-danger" type="submit" name="button" value=0>CANCELAR</button>
+    </form>
+  {% elif object.transaction_status == 2 %}
+    <h2 class="mt-4">Elector: {{object.elector}}</h2>
+    <h2 class="mt-2">Emitiendo el Voto</h2>
+    <form class="" method="post">
+      {% csrf_token %}
+      <button class="btn btn-warning" type="submit" name="button" value={{object}}>Finalizar</button>
+    </form>
+  {% else %}
+  {{object.get_transaction_status_display}} {{object.pk}}
+  {% endif %}
+</div>
+
+{% endblock %}

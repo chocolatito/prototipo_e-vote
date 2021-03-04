@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block main %}
+<div class="container-fluid d-flex justify-content-center mt-3 bg-dark text-light">
+  <h1>Urna para: {{object}}</h1>
+</div>
+<div class="container-fluid d-flex justify-content-center mt-3 bg-primary text-light">
+  <h1>Padron: {{padron}}</h1>
+</div>
+<!-- Card -->
+<div class="card">
+  <div class="card-header d-flex justify-content-between bg-light">
+    <h1>CABECERA</h1>
+  </div>
+  <div class="card-body">
+    <div class="table-responsive">
+      {% include "votacion/snippets/table.html" with electores=padron.padronelector_set %}
+    </div>
+  </div>
+</div>
+<!-- ./Card -->
+{% endblock %}

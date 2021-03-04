@@ -8,9 +8,15 @@ https://docs.djangoproject.com/en/3.0/howto/deployment/wsgi/
 """
 
 import os
+import environ
 
 from django.core.wsgi import get_wsgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'conf.settings')
+# _____________________________________________________________________
+# environ init
+env = environ.Env()
+environ.Env.read_env()
+# ____________________
+os.environ["DJANGO_SETTINGS_MODULE"] = env.str('DJANGO_SETTINGS_MODULE')
 
 application = get_wsgi_application()

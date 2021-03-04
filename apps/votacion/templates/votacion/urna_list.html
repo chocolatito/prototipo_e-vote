@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block main %}
+<header>
+  <!-- Jumbotron -->
+  <div class="p-3 text-center bg-primary text-light">
+    <h2 class="mb-3">Urnas registradas para la elección</h1>
+    <h2 class="mb-3">{{eleccion}}</h4>
+  </div>
+  <!-- Jumbotron -->
+</header>
+
+{% for urna in object_list %}
+<div class="list-group bg-light p-2">
+  <a href={{urna.get_absolute_url}} class="list-group-item list-group-item-action">{{urna.id}} - {{urna}}</a>
+</div>
+{% endfor %}
+{% endblock %}

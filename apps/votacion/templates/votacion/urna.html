@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block main %}
+<div class="mt-8">
+  <h1>Elección: {{object}}</h1>
+</div>
+<div class="container-fluid">
+  {% if object.urna_status == 0 or object.urna_status == 1 or object.urna_status == 3 %}
+  <div class="d-flex justify-content-center align-items-center" style="height:200px;">
+    <a class="btn btn-lg btn-outline-primary" href={% url 'votacion:disabled-urna' object.id %}>
+      <h1>Actualizar</h1>
+    </a>
+  </div>
+  {% elif object.urna_status == 2 %}
+    {% include "votacion/snippets/votacion.html" %}
+  {% elif object.urna_status == 4 %}
+  <div class="d-flex justify-content-center align-items-center" style="height:200px;background:grey">
+    <h1>URNA CERRADA</h1>
+  </div>
+  {% endif %}
+</div>
+{% endblock %}
