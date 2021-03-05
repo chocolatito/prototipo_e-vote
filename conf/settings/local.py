@@ -1,6 +1,6 @@
 from .base import *
 
-# Database
+# Database ESTO ES UN COMENTARIO DESDE PRODUCCION
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
 DATABASES = {
@@ -9,3 +9,7 @@ DATABASES = {
         'NAME': 'mydatabase',
     }
 }
+
+
+# STATICFILES_DIRS only required for development.
+STATICFILES_DIRS = [(os.path.join(BASE_DIR, "static"))]
