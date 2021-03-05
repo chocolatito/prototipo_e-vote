@@ -1,6 +1,8 @@
 from .base import *
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
+print(env.str('PASSWORD'))
+print(type(env.str('PASSWORD')))
 
 DATABASES = {
     'default': {
@@ -13,4 +15,4 @@ DATABASES = {
     }
 }
 # STATIC_ROOT only required for deployment.
-STATIC_ROOT = os.path.join(BASE_DIR, 'static'))
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')

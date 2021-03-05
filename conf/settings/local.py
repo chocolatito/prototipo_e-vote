@@ -9,3 +9,5 @@ DATABASES = {
         'NAME': 'mydatabase',
     }
 }
+# STATICFILES_DIRS only required for development.
+STATICFILES_DIRS = [(os.path.join(BASE_DIR, "static"))]
